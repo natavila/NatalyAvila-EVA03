@@ -4,7 +4,7 @@ import src.ar.edu.unlam.pb2.eva03.enumeradores.TipoDeEvento;
 
 public class Deportista {
 
-	public static TipoDeEvento tipo;
+	public static  TipoDeEvento tipo;
 	protected Integer numeroSocio;
 	protected String nombre;
 	
@@ -30,14 +30,13 @@ public class Deportista {
 		this.nombre = nombre;
 	}
 	
-	public Boolean esCorredor(TipoDeEvento tipo, Deportista deportista) {
-		if(deportista instanceof Corredor) {
-			 Deportista.tipo = tipo;                
-			return false;
-			}else
-		
-			return true;
-	
+
+	public static TipoDeEvento getTipo() {
+		return tipo;
+	}
+
+	public static void setTipo(TipoDeEvento tipo) {
+		Deportista.tipo = tipo;
 	}
 
 	@Override

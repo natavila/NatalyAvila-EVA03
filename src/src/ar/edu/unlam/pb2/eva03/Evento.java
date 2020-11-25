@@ -19,6 +19,11 @@ public class Evento {
 		this.numeroDeInscripcion = numeroDeInscripcion;
 		participantes = new TreeMap<Integer, Deportista>();
 	}
+	
+	public Integer agregarDeportista(Deportista deportista) {
+		participantes.put(this.numeroDeInscripcion++, deportista);
+		return participantes.size();
+	}
 
 	public TipoDeEvento getTipo() {
 		return tipo;

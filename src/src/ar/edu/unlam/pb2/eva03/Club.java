@@ -32,10 +32,23 @@ public class Club {
 		
 		return this.socios.size();
 	}
-	public Integer inscribirEnEvento(String string, Deportista deportista) {
-		Integer numeroInscripcion = 0;
+	public Integer inscribirEnEvento(String nombreDelEvento, Deportista deportista) throws NoEstaPreparado {
+		Integer numeroInscripciones = 0;
+		Evento evento = competencias.get(nombreDelEvento); //Se crea un evento para usar el  metodo de la clase Evento
+		switch(competencias.get(nombreDelEvento).getTipo()) {
+		case CARRERA_42K:
+			if(deportista instanceof Corredor){ //verifica si el deportista es corredor
+				numeroInscripciones = evento.agregarDeportista(deportista);//agregar al deportista al evento
+				numeroInscripciones++;
+				break;
+			}
+			
+			default:
+				throw new NoEstaPreparado("No se puede inscribir");
 		
-		return null; //devulve el numero de inscripcion
+		}
+		
+		return numeroInscripciones; //devulve el numero de inscripcion
 	}
 	public Evento crearEvento(TipoDeEvento tipo, String nombre) {
 		return this.competencias.put(nombre, new Evento(tipo));
